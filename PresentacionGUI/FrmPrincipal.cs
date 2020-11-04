@@ -27,5 +27,11 @@ namespace PresentacionGUI
             FrmGestionPersona frmPersona = new FrmGestionPersona();
             frmPersona.Show();
         }
+
+        private void consultaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmConsultaPersona frmConsultaPersona = new FrmConsultaPersona();
+            frmConsultaPersona.Show();
+        }
     }
 }

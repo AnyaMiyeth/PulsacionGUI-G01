@@ -1,7 +1,9 @@
 ﻿using Entity;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Linq;
 
 namespace DAL
 {
@@ -96,6 +98,26 @@ namespace DAL
 
             }
 
+        }
+        public List<Persona> ConsultaSexoPorConsultaLinq(string sexo) {
+            return
+                (from p in ConsultarTodos()
+                 where p.Sexo.Equals(sexo)
+                select p).ToList(); 
+        }
+        public List<Persona> ConsultaSexoPorMetodoLinq(string sexo)
+        {
+            return ConsultarTodos().Where(p => p.Sexo.Equals(sexo)).ToList();
+        }
+
+        public decimal SumarPulsaciones(string sexo)
+        {
+            return ConsultarTodos().Sum(p => p.Pulsacion);
+        }
+
+        public int Contar(string sexo)
+        {
+            return ConsultarTodos().Count(p=>p.Sexo.Equals(sexo));
         }
 
     }

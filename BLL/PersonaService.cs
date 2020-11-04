@@ -100,6 +100,30 @@ namespace BLL
                 return personaResponse = new ConsultaPersonaResponse("Error de Aplicacion: " + e.Message);
             }
         }
+
+        public ConsultaPersonaResponse ConsultarPorSexo(string sexo)
+        {
+
+            ConsultaPersonaResponse personaResponse;
+            try
+            {
+                List<Persona> personas = personaRepository.ConsultaSexoPorMetodoLinq(sexo);
+                if (personas != null)
+                {
+                    return personaResponse = new ConsultaPersonaResponse(personas);
+                }
+                else
+                {
+                    return personaResponse = new ConsultaPersonaResponse("La Persona buscada no se encuentra Registrada");
+                }
+
+            }
+            catch (Exception e)
+            {
+
+                return personaResponse = new ConsultaPersonaResponse("Error de Aplicacion: " + e.Message);
+            }
+        }
     }
 
    public class PersonaResponse 
